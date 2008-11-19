@@ -1,13 +1,16 @@
 Nodestroyed
 ===========
 
-Introduction goes here.
+Nodestroyed is a rails plugin which similar with acts_as_indestructible(https://github.com/ryanlowe/acts_as_indestructible/tree), it only adds a destroyed column to model and sets its value to false instead of destroyed the record permanently.
 
 
 Example
 =======
 
-Example goes here.
+class User < ActiveRecord::Base
+  act_as_nodestroyed
+  ...
+end
 
 
-Copyright (c) 2008 [name of plugin creator], released under the MIT license
+Copyright (c) 2008 [Nodestroyed], released under the MIT license
