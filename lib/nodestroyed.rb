@@ -32,10 +32,9 @@ module ActiveRecord #:nodoc:
       end
 
       def find(*args)
-        find_origin(*args) unless nodestroyed?
+        return find_origin(*args) unless self.nodestroyed?
         options = args.extract_options!
         args << options_excluding_destroyed(options)
-        # puts "===========#{args}"
         find_origin *args
       end
 
