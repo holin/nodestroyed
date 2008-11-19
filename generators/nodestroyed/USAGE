@@ -1,8 +1,16 @@
 Description:
-    Explain the generator
+	The model generator creates a migration witch adding destroyed column to the specified model(s).
 
 Example:
-    ./script/generate nodestroyed Thing
+	./script/generate nodestroyed ALL
 
-    This will create:
-        what/will/it/create
+	This will create an Migration:
+	Migration:  db/migrate/XXX_add_destroyed_field_to_all_needed_models.rb
+
+
+	./script/generate nodestroyed users,posts
+	the users and posts are table names.
+	
+	This will create an Migration:
+	Migration:  db/migrate/XXX_add_destroyed_field_to_users_posts.rb
+

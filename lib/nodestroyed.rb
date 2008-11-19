@@ -8,18 +8,13 @@ module ActiveRecord #:nodoc:
         alias_method :find_origin, :find
         alias_method :destroy_origin, :destroy
       end
+      
+      base.instance_eval do
+        alias_method :destroy_origin, :destroy
+      end
     end
 
     module ClassMethods
-      def self.extended(base)
-        Dir.glob(RAILS_ROOT + '/app/models/**/*.rb').each { |file| require file }
-        models_need_add_destroyed = Array.new
-        Object.subclasses_of(ActiveRecord::Base).each do |model|
-          next if model.to_s == "CGI::Session::ActiveRecordStore::Session"
-          model.act_as_nodestroyed
-        end
-      end
-
       def act_as_nodestroyed
         extend(ActiveRecord::Nodestroyed::SingletonMethods)
         include(ActiveRecord::Nodestroyed::InstanceMethods)
